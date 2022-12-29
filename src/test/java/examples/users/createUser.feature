@@ -2,8 +2,8 @@ Feature: List Users
 
     Background:
         * url baseUrl
-        * def baseRequest = {name: '#(name)', job: '#(job)'}
-        * def baseResponse = {name: '#(name)', job: '#(job)', id: "#string", createdAt: "#string"}
+        * def baseRequest = call read('getUserInfo.js')
+        * def baseResponse = {name: '#(baseRequest.name)', job: '#(baseRequest.job)', id: "#string", createdAt: "#string"}
 
     Scenario: Create an user
         Given path 'api/users'
