@@ -6,9 +6,7 @@ function fn() {
   }
   var config = {
     env: env,
-    baseUrl: "https://reqres.in",
-    name: 'Karate Framework',
-    job: 'API Test Automation'
+    baseUrl: "https://reqres.in"
   }
   if (env == 'dev') {
     // customize
