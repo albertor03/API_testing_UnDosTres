@@ -1,2 +1,4 @@
-target/
+target/*
+target/test-clases/
 .vscode/
+target/test-classes/examples/ExamplesTest.class
