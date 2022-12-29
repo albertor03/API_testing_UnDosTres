@@ -8,7 +8,7 @@ Feature: List Users
     * def baseResponse = 
     """
       {
-        "page": 2,
+        "page": "#(total_pages)",
         "per_page": "#number",
         "total": "#number",
         "total_pages": "#number",
@@ -20,14 +20,16 @@ Feature: List Users
       }
     """
 
+  @list_users
   Scenario: get all users
     Given path 'users'
-    And param page = '2'
+    And param page = total_pages
     When method get
     Then status 200
     And match response == baseResponse
-    And match each response.data == userDataResponse  
+    And match each response.data == userDataResponse
 
+  @list_resources
   Scenario: get all unknown
     Given path 'unknown'
     When method get
@@ -36,3 +38,18 @@ Feature: List Users
     * baseResponse.data = "#[] unknownDataResponse"
     And match response == baseResponse
     And match each response.data == unknownDataResponse
+
+  @unhappy_path_list
+  Scenario Outline: Unhappy path to get all <pathTo>
+    Given path <pathTo>
+    And param page = 40
+    When method get
+    Then status 200
+    * baseResponse.page = 40
+    * baseResponse.data = "#[]"
+    And match response == baseResponse
+
+    Examples:
+    |pathTo   |
+    |'users'  |
+    |'unknown'|

@@ -5,6 +5,7 @@ Feature: Login User
         * def baseRequest = { "email": "eve.holt@reqres.in", "password": "cityslicka" }
         * def baseResponse = {"token": "#string"}
 
+    @login_successful
     Scenario: LOGIN SUCCESSFUL
         Given path 'api/login'
         And request baseRequest
@@ -12,6 +13,7 @@ Feature: Login User
         Then status 200
         And match response == baseResponse
 
+    @login_unsuccessful
     Scenario Outline: LOGIN UNSUCCESSFUL (<action>)
         Given path 'api/login'
         And request <Resquest>

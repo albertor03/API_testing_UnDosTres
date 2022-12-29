@@ -5,13 +5,15 @@ Feature: Register User
         * def baseRequest = {"email": "eve.holt@reqres.in", "password": "pistol"}
         * def baseResponse = {"id": "#number", "token": "#string"}
 
+    @register_successful
     Scenario: REGISTER - SUCCESSFUL
         Given path 'api/register'
         And request baseRequest
         When method post
         Then status 200
         And match response == baseResponse
-
+    
+    @register_unsuccessful
     Scenario Outline: REGISTER - UNSUCCESSFUL (<action>)
         Given path 'api/register'
         And request <Resquest>
