@@ -17,9 +17,12 @@ Feature: User Features
         * call read(basePath + 'loginUser.feature@login_unsuccessful')
         * call read(basePath + 'registerUser.feature@register_unsuccessful')
 
-    @skipme @smoke_register_login
-    Scenario: Smoke test to login and register enpoints
+    @skipme @smoke_register
+    Scenario: Smoke test to register enpoints
         * call read(basePath + 'registerUser.feature@register_successful')
+
+    @skipme @smoke_login
+    Scenario: Smoke test to login enpoints
         * call read(basePath + 'loginUser.feature@login_successful')
 
     @skipme @smoke_user
@@ -28,6 +31,6 @@ Feature: User Features
         * call read(basePath + 'createUser.feature')
         * call read(basePath + 'updateAndDeleteUser.feature')
 
-    @smoke_resource @skipme
+    @skipme @smoke_resource
     Scenario: Smoke test to resource endpoint
         * call read(basePath + 'listUsers.feature@list_resources')
