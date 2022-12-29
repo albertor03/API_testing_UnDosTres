@@ -6,7 +6,9 @@ function fn() {
   }
   var config = {
     env: env,
-    baseUrl: "https://reqres.in"
+    baseUrl: "https://reqres.in",
+    basePath: "",
+    total_pages: 2 
   }
   if (env == 'dev') {
     // customize
